@@ -19,26 +19,17 @@
   <link href="/blog/favicon.png" rel="icon">
   <link rel="alternate" href="/blog/atom.xml" title="Ifcode" type="application/atom+xml">
   <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 </head>
 
 
 <body>
-  <div id="container" class="container">
-    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
-  <a href="/blog/">
-    <img class="circle" src="http://www.gravatar.com/avatar/fd4166d011c76e6be7078920aec90110.png?s=150" alt="Anthem">
-  </a>
-  <h1 id="site-title" class="title">
-    <a href="/blog/">Ifcode</a>
-  </h1>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/blog/">Ifcode</a></h1>
+  <h2><a href="/blog/">Coding, thinking, living ...</a></h2>
 </div>
-<a href="#" id="toggle">信息</a>
-<div class="about" style="display: none">
-  <p>Coding, thinking, living ...</p>
-</div>
-<nav class="menu-navigation-container">
+<nav id="main-nav" class="alignright">
   <ul>
     
       <li><a href="/">Home</a></li>
@@ -46,100 +37,66 @@
       <li><a href="/archives">Archives</a></li>
     
   </ul>
+  <div class="clearfix"></div>
 </nav>
-<div class="widget">
-  
-  <nav class="search">
-  <form action="http://google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:nie-xin.github.io/blog/">
-  </form>
-</nav>
-
-  
-
-  
-<nav class="tags">
-  <h3 class="title">Tags</h3>
-  <ul>
-  
-    <li><a href="/blog/tags/Backend/">Backend</a>&nbsp;<small>(1)</small></li>
-  
-    <li><a href="/blog/tags/Journal/">Journal</a>&nbsp;<small>(3)</small></li>
-  
-  </ul>
-</nav>
-
-
-  <nav class="other">
-  <ul>
-    <li>
-      <a href="http://weibo.com/u/1297218944" target="_blank">关注我的微博</a>
-    </li>
-  </ul>
-</nav>
-
-</div></header>
-    <section id="content" class="blog">
-      
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
 <h2 class="archive-title">2013/10</h2>
 
 
   
     <article class="post">
-  <header>
-    
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-10-27T08:54:24.000Z"><a href="/blog/2013/10/27/2013-10-27-a-choice/">Oct 27 2013</a></time>
+      
+      
   
     <h1 class="title"><a href="/blog/2013/10/27/2013-10-27-a-choice/">A choice</a></h1>
   
 
-    
-  </header>
-  <section class="entry">
-    
-      <p>After years of confusing, I finally found what I really like to do in CS, that is the human-computer interaction &amp; user experience. So I will get ride off the traditional developemnt and go ahead with things I would like to do.</p>
+    </header>
+    <div class="entry">
+      
+        <p>After years of confusing, I finally found what I really like to do in CS, that is the human-computer interaction &amp; user experience. So I will get ride off the traditional developemnt and go ahead with things I would like to do.</p>
 <p>So I start to learn the technique about JavaScript and I switch to Hexo for blogging coz it&#39;s based on node.js. What was a toy language in my mind has exploded to all sorts of fields like backend server, games, desktop app, mobile app or even embeded system. </p>
 <p>I made a choice and what I should to do is just stick to it. Ok, let&#39;s start this journel.</p>
 
-    
-  </section>
-  <footer>
-    
-    <div class="clearfix"></div>
-    
-      <div class="alignleft widget">
-        
-        
-          <time datetime="2013-10-27T08:54:24.000Z"><a href="/blog/2013/10/27/2013-10-27-a-choice/">Oct 27 2013</a></time>
-        
-        
-
-        
-  
-  <a href="/blog/tags/Journal/">#Journal</a>
-
-
-      </div>
       
-    
-    <div class="clearfix"></div>
-  </footer>
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
 </article>
 
 
   
     <article class="post">
-  <header>
-    
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-10-25T00:00:00.000Z"><a href="/blog/2013/10/25/2013-10-25-node核心概念/">Oct 25 2013</a></time>
+      
+      
   
     <h1 class="title"><a href="/blog/2013/10/25/2013-10-25-node核心概念/">同步I/O与异步I/O</a></h1>
   
 
-    
-  </header>
-  <section class="entry">
-    
-      <h1>NODE核心概念</h1>
+    </header>
+    <div class="entry">
+      
+        <h1>NODE核心概念</h1>
 <hr>
 <h2>同步I/O与异步I/O</h2>
 <blockquote>
@@ -170,66 +127,70 @@
 <p>传统的编程方式在互联网不断扩张之后遇到了不少挑战。并发处理，可扩展性和降低成本也越来越受到重视（可以参考LINKIN招聘数据）。异步I/O无疑是一种（但非唯一）有效的解决方式。</p>
 <p>稍后我们在一起看看采用异步I/O方式的NODE到底是如何利用异步模型来处理大规模并发的。到底是什么神奇的力量能让服务器数量从三十台降到三台？</p>
 
-    
-  </section>
-  <footer>
-    
-    <div class="clearfix"></div>
-    
-      <div class="alignleft widget">
-        
-        
-          <time datetime="2013-10-25T00:00:00.000Z"><a href="/blog/2013/10/25/2013-10-25-node核心概念/">Oct 25 2013</a></time>
-        
-        
-
-        
-  
-  <a href="/blog/tags/Backend/">#Backend</a>
-
-
-      </div>
       
-    
-    <div class="clearfix"></div>
-  </footer>
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
 </article>
 
 
   
 
+  <nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:nie-xin.github.io/blog/">
+  </form>
+</div>
+
   
 
-    </section>
-    <footer id="footer" class="clearfix footer"><div class="alignleft">
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/blog/tags/Backend/">Backend</a><small>1</small></li>
+  
+    <li><a href="/blog/tags/Journal/">Journal</a><small>3</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
   
   &copy; 2013 NIE Xin
   
 </div>
 <div class="clearfix"></div></footer>
-  </div>
-  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="/blog/js/jquery.imagesloaded.min.js"></script>
-<script src="/blog/js/main.js"></script>
+<script src="/blog/js/gallery.js"></script>
 
 
 
 
-<link rel="stylesheet" type="text/css" href="/blog/fancybox/jquery.fancybox.css">
-<script type="text/javascript" src="/blog/fancybox/jquery.fancybox.js"></script>
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript">
 (function($){
-  $('.fancybox').fancybox({
-    prevEffect: 'none',
-    nextEffect: 'none',
-    closeBtn: false,
-    helpers: {
-        title: {type: 'inside'},
-        buttons: {
-            position: 'bottom'
-        }
-    }
-  });
+  $('.fancybox').fancybox();
 })(jQuery);
 </script>
 
