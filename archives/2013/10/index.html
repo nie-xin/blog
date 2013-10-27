@@ -3,33 +3,42 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2013/10 | IfCode</title>
+  <title>Archives: 2013/10 | Ifcode</title>
   <meta name="author" content="NIE Xin">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-  <meta property="og:site_name" content="IfCode"/>
+  <meta property="og:site_name" content="Ifcode"/>
 
   
     <meta property="og:image" content="undefined"/>
   
 
   <link href="/blog/favicon.png" rel="icon">
-  <link rel="alternate" href="/blog/atom.xml" title="IfCode" type="application/atom+xml">
+  <link rel="alternate" href="/blog/atom.xml" title="Ifcode" type="application/atom+xml">
   <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
   
 </head>
 
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/blog/">IfCode</a></h1>
-  <h2><a href="/blog/"></a></h2>
+  <div id="container" class="container">
+    <header id="sidebar" role="banner" class="sidebar"><div id="branding" class="branding">
+  <a href="/blog/">
+    <img class="circle" src="http://www.gravatar.com/avatar/fd4166d011c76e6be7078920aec90110.png?s=150" alt="Anthem">
+  </a>
+  <h1 id="site-title" class="title">
+    <a href="/blog/">Ifcode</a>
+  </h1>
 </div>
-<nav id="main-nav" class="alignright">
+<a href="#" id="toggle">信息</a>
+<div class="about" style="display: none">
+  <p>Coding, thinking, living ...</p>
+</div>
+<nav class="menu-navigation-container">
   <ul>
     
       <li><a href="/">Home</a></li>
@@ -37,88 +46,190 @@
       <li><a href="/archives">Archives</a></li>
     
   </ul>
-  <div class="clearfix"></div>
 </nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
+<div class="widget">
+  
+  <nav class="search">
+  <form action="http://google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:nie-xin.github.io/blog/">
+  </form>
+</nav>
+
+  
+
+  
+<nav class="tags">
+  <h3 class="title">Tags</h3>
+  <ul>
+  
+    <li><a href="/blog/tags/Backend/">Backend</a>&nbsp;<small>(1)</small></li>
+  
+    <li><a href="/blog/tags/Journal/">Journal</a>&nbsp;<small>(3)</small></li>
+  
+  </ul>
+</nav>
+
+
+  <nav class="other">
+  <ul>
+    <li>
+      <a href="http://weibo.com/u/1297218944" target="_blank">关注我的微博</a>
+    </li>
+  </ul>
+</nav>
+
+</div></header>
+    <section id="content" class="blog">
+      
 <h2 class="archive-title">2013/10</h2>
 
 
   
     <article class="post">
+  <header>
+    
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-10-27T08:54:24.000Z"><a href="/blog/2013/10/27/a-choice/">Oct 27 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/blog/2013/10/27/a-choice/">A choice</a></h1>
+    <h1 class="title"><a href="/blog/2013/10/27/2013-10-27-a-choice/">A choice</a></h1>
   
 
-    </header>
-    <div class="entry">
-      
-        <p>After years of confusing, I finally found what I really like to do in CS, that is the human-computer interaction &amp; user experience. So I will get ride off the traditional developemnt and go ahead with things I would like to do.</p>
+    
+  </header>
+  <section class="entry">
+    
+      <p>After years of confusing, I finally found what I really like to do in CS, that is the human-computer interaction &amp; user experience. So I will get ride off the traditional developemnt and go ahead with things I would like to do.</p>
 <p>So I start to learn the technique about JavaScript and I switch to Hexo for blogging coz it&#39;s based on node.js. What was a toy language in my mind has exploded to all sorts of fields like backend server, games, desktop app, mobile app or even embeded system. </p>
 <p>I made a choice and what I should to do is just stick to it. Ok, let&#39;s start this journel.</p>
 
-      
-    </div>
-    <footer>
-      
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="alignleft widget">
         
         
+          <time datetime="2013-10-27T08:54:24.000Z"><a href="/blog/2013/10/27/2013-10-27-a-choice/">Oct 27 2013</a></time>
+        
+        
+
+        
+  
+  <a href="/blog/tags/Journal/">#Journal</a>
+
+
+      </div>
       
-      <div class="clearfix"></div>
-    </footer>
-  </div>
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+  
+    <h1 class="title"><a href="/blog/2013/10/25/2013-10-25-node核心概念/">同步I/O与异步I/O</a></h1>
+  
+
+    
+  </header>
+  <section class="entry">
+    
+      <h1>NODE核心概念</h1>
+<hr>
+<h2>同步I/O与异步I/O</h2>
+<blockquote>
+<p>Node.js自诞生之日起就以起高并发得名，其中的核心便是异步I/O了。那么到底什么是异步I/O？和传统的同步I/O比又有什么优点？让我们从简单的概念讲起吧。</p>
+</blockquote>
+<h3>同步I/O</h3>
+<p>在操作系统中我们都学过，线程执行在遇到I/O操作的时候会被阻塞。然后CPU转而去处理该I/O操作，得出结果后再返回该线程继续执行下去。这就是传统意义上得同步I/O，也是在编程中非常直观的方式。假设我们有一个名为“test.txt”的文件，下面让我们写一个读取文件的小例子：<br>    // fs是node的file system<br>    var fs = require(‘fs’);<br>    //    sync指明同步I/O方式<br>    var data = fs.readFileSync(‘test.txt’, ‘utf-8’);<br>    console.log(data);<br>    console.log(‘end of program.’);</p>
+<p>可以预见，该程序先读取test文件的内容并显示在终端上，然后打印一行end of program作为程序的结束。一般程序都是这么线性执行的，理解起来也非常容易。这么执行有什么问题？</p>
+<h3>问题</h3>
+<p>这样的线程执行方式在一般情景下是完全没有问题的，但我们将场景切换到互联网上来看。传统服务器的处理方式是为每个请求开启一个线程，在遇到I/O请求的时候就按上面说的同步方式来坐阻塞处理。但每个CPU能承受的线程数是有限制的，于是达到限制的时候就必须添加新的CPU。何况开启线程是非常消耗资源的，访问量教大的互联网应用，服务器扩展的速度可能会远远超过你的想象。比如前两天听的PODCAST中，一个有几十万用户的ROR应该就已经消耗了二十几台服务器了。</p>
+<h3>策略</h3>
+<p>那么有其他的解决方法么？从上面的模型上来开，瓶颈主要是在阻塞上。于是异步I/O的概念就此诞生了。与同步想法，异步方式在遇到I/O操作时不阻塞线程，而是将I/O请求发给后台执行，然后线程继续执行下去。直到I/O操作完成后再通知线程来处理结果。于是线程的利用率就很高了，单个线程就能处理大量的请求。下面来看看异步方式I/O到底是什么样的：</p>
+<pre><code><span class="title">var</span> fs = require('fs');
+// node默认是异步处理凡事
+<span class="title">fs</span>.readFile('test.txt',<span class="string"> 'utf-8'</span>, function(err, <span class="typedef"><span class="keyword">data</span>) <span class="container">{    
+// 读取出错则打印出错信息，否则打印文件内容
+<span class="title">if</span> (<span class="title">err</span>) {
+    <span class="title">console</span>.<span class="title">log</span>(<span class="title">err</span>);
+}</span> else <span class="container">{
+    <span class="title">console</span>.<span class="title">log</span>(<span class="title">data</span>);
+}</span></span>
+});
+<span class="title">console</span>.log('end <span class="keyword">of</span> program.');</code></pre>
+<p>这个程序的执行结果又是什么？这次不再是先打印文件内容了，而是先打印了end of program，然后才是文件内容。就像上面提到的，但程序执行到读取文件这个I/O操作的时候，不会再阻塞并等待了。去读操作被交给后台去处理，而线程继续执行下去，也就是执行后面的end of program这条指令。文件读取完成后再打印文件的内容。</p>
+<h3>缺点</h3>
+<p>看起来好像异步方式是个非常完美的解决方案。别急着下结论，任何事情都有好的一面和坏的一面，没有任何方案是绝对完美的。异步方式的缺点，就在于其非线性的执行方式带给编写程序的困难。从上面的例子可以看到，异步程序的执行结果与传统的程序有很大区别。这就说明了编写异步程序比较困难，需要改变传统的程序设计思想。别低估了这个困难，传统的力量是远远超出人的想象的！</p>
+<h3>结语</h3>
+<p>传统的编程方式在互联网不断扩张之后遇到了不少挑战。并发处理，可扩展性和降低成本也越来越受到重视（可以参考LINKIN招聘数据）。异步I/O无疑是一种（但非唯一）有效的解决方式。</p>
+<p>稍后我们在一起看看采用异步I/O方式的NODE到底是如何利用异步模型来处理大规模并发的。到底是什么神奇的力量能让服务器数量从三十台降到三台？</p>
+
+    
+  </section>
+  <footer>
+    
+    <div class="clearfix"></div>
+    
+      <div class="alignleft widget">
+        
+        
+          <time datetime="2013-10-25T00:00:00.000Z"><a href="/blog/2013/10/25/2013-10-25-node核心概念/">Oct 25 2013</a></time>
+        
+        
+
+        
+  
+  <a href="/blog/tags/Backend/">#Backend</a>
+
+
+      </div>
+      
+    
+    <div class="clearfix"></div>
+  </footer>
 </article>
 
 
   
 
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
-</div></div>
-    <aside id="sidebar" class="alignright">
-  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:nie-xin.github.io/blog/">
-  </form>
-</div>
-
   
 
-  
-</aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="alignleft">
+    </section>
+    <footer id="footer" class="clearfix footer"><div class="alignleft">
   
   &copy; 2013 NIE Xin
   
 </div>
 <div class="clearfix"></div></footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  </div>
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js"></script>
 <script src="/blog/js/jquery.imagesloaded.min.js"></script>
-<script src="/blog/js/gallery.js"></script>
+<script src="/blog/js/main.js"></script>
 
 
 
 
-<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="/blog/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="/blog/fancybox/jquery.fancybox.js"></script>
 <script type="text/javascript">
 (function($){
-  $('.fancybox').fancybox();
+  $('.fancybox').fancybox({
+    prevEffect: 'none',
+    nextEffect: 'none',
+    closeBtn: false,
+    helpers: {
+        title: {type: 'inside'},
+        buttons: {
+            position: 'bottom'
+        }
+    }
+  });
 })(jQuery);
 </script>
 
