@@ -90,20 +90,22 @@
       
       
   
-    <h1 class="title"><a href="/blog/2013/10/25/2013-10-25-node核心概念/">同步I/O与异步I/O</a></h1>
+    <h1 class="title"><a href="/blog/2013/10/25/2013-10-25-node核心概念/">NODE核心概念(1) - 同步I/O与异步I/O</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h1>NODE核心概念</h1>
-<hr>
-<h2>同步I/O与异步I/O</h2>
-<blockquote>
+        <blockquote>
 <p>Node.js自诞生之日起就以起高并发得名，其中的核心便是异步I/O了。那么到底什么是异步I/O？和传统的同步I/O比又有什么优点？让我们从简单的概念讲起吧。</p>
 </blockquote>
 <h3>同步I/O</h3>
-<p>在操作系统中我们都学过，线程执行在遇到I/O操作的时候会被阻塞。然后CPU转而去处理该I/O操作，得出结果后再返回该线程继续执行下去。这就是传统意义上得同步I/O，也是在编程中非常直观的方式。假设我们有一个名为“test.txt”的文件，下面让我们写一个读取文件的小例子：<br>    // fs是node的file system<br>    var fs = require(‘fs’);<br>    //    sync指明同步I/O方式<br>    var data = fs.readFileSync(‘test.txt’, ‘utf-8’);<br>    console.log(data);<br>    console.log(‘end of program.’);</p>
+<p>在操作系统中我们都学过，线程执行在遇到I/O操作的时候会被阻塞。然后CPU转而去处理该I/O操作，得出结果后再返回该线程继续执行下去。这就是传统意义上得同步I/O，也是在编程中非常直观的方式。假设我们有一个名为“test.txt”的文件，下面让我们写一个读取文件的小例子：<br>    // fs是node的file system<br>    var fs = require(‘fs’);</p>
+<pre><code>//    sync指明同步<span class="type">I</span>/<span class="type">O</span>方式
+<span class="title">var</span> <span class="typedef"><span class="keyword">data</span> = fs.readFileSync<span class="container">('<span class="title">test</span>.<span class="title">txt'</span>, '<span class="title">utf</span>-8')</span>;</span>
+
+<span class="title">console</span>.log(<span class="typedef"><span class="keyword">data</span>);</span>
+<span class="title">console</span>.log('end <span class="keyword">of</span> program.');</code></pre>
 <p>可以预见，该程序先读取test文件的内容并显示在终端上，然后打印一行end of program作为程序的结束。一般程序都是这么线性执行的，理解起来也非常容易。这么执行有什么问题？</p>
 <h3>问题</h3>
 <p>这样的线程执行方式在一般情景下是完全没有问题的，但我们将场景切换到互联网上来看。传统服务器的处理方式是为每个请求开启一个线程，在遇到I/O请求的时候就按上面说的同步方式来坐阻塞处理。但每个CPU能承受的线程数是有限制的，于是达到限制的时候就必须添加新的CPU。何况开启线程是非常消耗资源的，访问量教大的互联网应用，服务器扩展的速度可能会远远超过你的想象。比如前两天听的PODCAST中，一个有几十万用户的ROR应该就已经消耗了二十几台服务器了。</p>
