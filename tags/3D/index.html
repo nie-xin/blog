@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>3D | Ifcode</title>
+  <meta name="author" content="NIE Xin">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Ifcode"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/blog/favicon.png" rel="icon">
+  <link rel="alternate" href="/blog/atom.xml" title="Ifcode" type="application/atom+xml">
+  <link rel="stylesheet" href="/blog/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/blog/">Ifcode</a></h1>
+  <h2><a href="/blog/">Coding, thinking, living ...</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title tag">3D</h2>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-11-03T18:21:49.000Z"><a href="/blog/2013/11/03/osg-journey/">Nov 3 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2013/11/03/osg-journey/">osg-journey</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>这年头啥都不容易。好不容易遇到一个非常感兴趣的stage，结果还没面试，先给来了两道编程题。 题目到不是很难，不过要使用的这个类库我确实是一点都不了解。不过人家也在邮件了说了，出这种题目的理由就是为了测试自主解决难题和自我学习的能力。好吧，那么让我们开始吧。</p>
+<hr>
+<h3>磨刀篇</h3>
+<p><a href="https://github.com/openscenegraph/osg" target="_blank">OpenSceneGraph</a>是一个开源的场景建模C++库。在某些方面还算流行，不过今年来有些底气不足。 和众多开源项目类似，最大的问题就是文档老旧残缺，各种函数说明语焉不详。 在这里我想瞎扯几句，好的文档是一个项目成功的必然条件。君不见PHP，Python等等文档都做得非常优秀。每个函数都有具体的讲解，下面还附带应用实例。PHP的文档又更出色一些，除了官方解说还允许用户留言。下面能找到许多关于该函数的最佳实践。 与此相反，第一次搜索OSG文档的时候，我实在是倒抽了一口冷气。这他喵的也能叫文档？无非把函数接口用列表列出来而已，无实用说明，无具体实例。不得不说作者实在是惜字如金，看这意思是让我们自己一个一个试？还是直接看源代码？这尿性连OpenCV都不如阿……</p>
+<p>撇开文档暂且不说，这样的开源项目通常都非常难安装。用作者的话说就是把编译的选择和快乐留给用户，稍微直白的翻译下，他的意思就是你们能不能装我不知道，反正在我的电脑系统上是可以的。回想当年编译OPENCV的痛苦……这难不成又要折腾一次？</p>
+<p>你们也太小看小哥我了，自从有了上次的经验，哥再也不会SB的自己编译源代码了。APT GET INSTALL解决一切！ 当然了，Ubuntu库中的版本不是很新，只要不追求最新的功能，但用稳定版开发也不错嘛。</p>
+<p>于是，</p>
+<pre><code>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> build-dep openscenegraph</code></pre>
+<p>稍等片刻就完成了。 要说UBUNTU比MAC OSX唯一强的地方就是这里了，包管理实在是太方便了阿浑蛋！</p>
+<p>装好之后用osgversion确认一下，如果返回类似下面的东西就标示安装顺利完成了：</p>
+<pre><code><span class="title">OpenSceneGraph</span> Library <span class="number">3</span>.<span class="number">0</span>.<span class="number">1</span></code></pre>
+<p>那么来看看包和头文件都安装到哪里了吧：</p>
+<pre><code><span class="comment">pkg</span>-<span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">libs</span> <span class="comment">openscenegraph</span>
+<span class="comment">pkg</span>-<span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cflags</span> <span class="comment">openscenegraph</code></pre>
+<p>下面可以设置一下环境变量，告诉OS去那里找需要的库和头文件：</p>
+<pre><code><span class="reserved">export</span> OSG_FILE_PATH=<span class="regexp">/usr/bin/</span>data
+<span class="reserved">export</span> LD_LIBRARY_PATH=<span class="regexp">//</span>lib
+<span class="reserved">export</span> PATH=<span class="regexp">//i</span>nclude</code></pre>
+<p>有了这些信息我们就可以开始开发了。我使用的是免费又好用的Eclipse CDT， 新建一个project, 然后在project属性中做如下设置：</p>
+<p><img src="http://ww4.sinaimg.cn/large/4d51fd80gw1ea7gbdchloj20nr0e5di0.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/4d51fd80gw1ea7g9yj5dgj211y0koq79.jpg" alt=""></p>
+<p>好了，下面就可以慢慢玩了。如果心情好了我在慢慢更新吧。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+
+  <nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:nie-xin.github.io/blog/">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/blog/tags/3D/">3D</a><small>1</small></li>
+  
+    <li><a href="/blog/tags/Backend/">Backend</a><small>1</small></li>
+  
+    <li><a href="/blog/tags/Journal/">Journal</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2013 NIE Xin
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/jquery.imagesloaded.min.js"></script>
+<script src="/blog/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

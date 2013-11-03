@@ -52,6 +52,59 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-11-03T18:21:49.000Z"><a href="/blog/2013/11/03/osg-journey/">Nov 3 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2013/11/03/osg-journey/">osg-journey</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>这年头啥都不容易。好不容易遇到一个非常感兴趣的stage，结果还没面试，先给来了两道编程题。 题目到不是很难，不过要使用的这个类库我确实是一点都不了解。不过人家也在邮件了说了，出这种题目的理由就是为了测试自主解决难题和自我学习的能力。好吧，那么让我们开始吧。</p>
+<hr>
+<h3>磨刀篇</h3>
+<p><a href="https://github.com/openscenegraph/osg" target="_blank">OpenSceneGraph</a>是一个开源的场景建模C++库。在某些方面还算流行，不过今年来有些底气不足。 和众多开源项目类似，最大的问题就是文档老旧残缺，各种函数说明语焉不详。 在这里我想瞎扯几句，好的文档是一个项目成功的必然条件。君不见PHP，Python等等文档都做得非常优秀。每个函数都有具体的讲解，下面还附带应用实例。PHP的文档又更出色一些，除了官方解说还允许用户留言。下面能找到许多关于该函数的最佳实践。 与此相反，第一次搜索OSG文档的时候，我实在是倒抽了一口冷气。这他喵的也能叫文档？无非把函数接口用列表列出来而已，无实用说明，无具体实例。不得不说作者实在是惜字如金，看这意思是让我们自己一个一个试？还是直接看源代码？这尿性连OpenCV都不如阿……</p>
+<p>撇开文档暂且不说，这样的开源项目通常都非常难安装。用作者的话说就是把编译的选择和快乐留给用户，稍微直白的翻译下，他的意思就是你们能不能装我不知道，反正在我的电脑系统上是可以的。回想当年编译OPENCV的痛苦……这难不成又要折腾一次？</p>
+<p>你们也太小看小哥我了，自从有了上次的经验，哥再也不会SB的自己编译源代码了。APT GET INSTALL解决一切！ 当然了，Ubuntu库中的版本不是很新，只要不追求最新的功能，但用稳定版开发也不错嘛。</p>
+<p>于是，</p>
+<pre><code>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> build-dep openscenegraph</code></pre>
+<p>稍等片刻就完成了。 要说UBUNTU比MAC OSX唯一强的地方就是这里了，包管理实在是太方便了阿浑蛋！</p>
+<p>装好之后用osgversion确认一下，如果返回类似下面的东西就标示安装顺利完成了：</p>
+<pre><code><span class="title">OpenSceneGraph</span> Library <span class="number">3</span>.<span class="number">0</span>.<span class="number">1</span></code></pre>
+<p>那么来看看包和头文件都安装到哪里了吧：</p>
+<pre><code><span class="comment">pkg</span>-<span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">libs</span> <span class="comment">openscenegraph</span>
+<span class="comment">pkg</span>-<span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cflags</span> <span class="comment">openscenegraph</code></pre>
+<p>下面可以设置一下环境变量，告诉OS去那里找需要的库和头文件：</p>
+<pre><code><span class="reserved">export</span> OSG_FILE_PATH=<span class="regexp">/usr/bin/</span>data
+<span class="reserved">export</span> LD_LIBRARY_PATH=<span class="regexp">//</span>lib
+<span class="reserved">export</span> PATH=<span class="regexp">//i</span>nclude</code></pre>
+<p>有了这些信息我们就可以开始开发了。我使用的是免费又好用的Eclipse CDT， 新建一个project, 然后在project属性中做如下设置：</p>
+<p><img src="http://ww4.sinaimg.cn/large/4d51fd80gw1ea7gbdchloj20nr0e5di0.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/4d51fd80gw1ea7g9yj5dgj211y0koq79.jpg" alt=""></p>
+<p>好了，下面就可以慢慢玩了。如果心情好了我在慢慢更新吧。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-10-28T21:56:00.000Z"><a href="/blog/2013/10/28/is-my-life-worth-living/">Oct 28 2013</a></time>
       
       
@@ -217,48 +270,11 @@
 
 
   
-    <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-06-08T00:00:00.000Z"><a href="/blog/2013/06/08/2013-06-08-life-is-life/">Jun 8 2013</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/blog/2013/06/08/2013-06-08-life-is-life/">Life is life</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>再过两个月我就正式三十岁了，人生的三分之一已经悄然逝去。我的人生在这两年里已经悄然改变，曾经幻想的生活也已经幻灭。往往回顾那些年，总觉得有些值得回忆的东西，不舍得他们就这样消失在时光里。于是稍微整理一下回忆，整理成我的小故事。</p>
-<h2>缘起</h2>
-<p>时光倒流到96年，还满脸稚气的自己参阅者一本厚度近似辞海的打印文档——《DOS参考手册》。这是当时我唯一能接触到关于怎么使用那台神奇的机器，我的第一台468电脑的参考资料。当时自己的知识水平几乎不可能读懂翻译的异常晦涩的手册的，于是只能按例子一个个输入看会有什么结果。到也渐渐熟悉了那几个常用操作，什么dir啦cd啦，也能分辨出能执行的程序文件了。只不过当时的软件少得可怜，除了一个UCDOS能用来联系打字排版之外，就剩下几个盗版的台湾教育软件能玩玩了。就算是如此，那种充满了互动的软件过程还是深深吸引了我。和家里的游戏机的卡带相比，至少我能看到软件里的各种文件了！软件不再是封装在电子版里的黑盒子，而是可以真真看到名字类型的文件了！这对我无疑是一个巨大的触动，虽然我还是不懂那些文件是怎么弄出来并神奇的运行成有图像声音的程序的。但那种贴近的感觉很强烈，也第一次明白了程序原来是有人写出来的，而不是制造成的电路板。</p>
-<p>当时还是有编程语言的，就是老式的basic语言。以当时我的智商和耐性，我根本没可能学会这个东西。但有一次我还是依葫芦画瓢地把参考书上得范例输入了进去，居然最后也成功了……可惜这也是唯一一次的成功。我还清楚的记得那是一个简单的小动画，是一片叶子有水滴划过。今天看来是在弱智，但当时的我可是高兴了小半天呢。毕竟是自己第一次写的程序，尽管我也不知道自己写了些什么东西上去，但至少能用了嘛。</p>
-<p>晚些时候还挑战过一些比较复杂的程序，但自己缺乏耐心和细致，加上编程环境没有错误提示，也就都不了了之了。当时想过，那些写出程序的人真了不起，一个程序里少说也有上百个文件呢。可自己并未想过以后会做程序员，年少时谁会羡慕整天埋头玩电脑的人，狂霸酷拽吊炸天才是骚年们追求的风格。于是写程序这种事就搁置了下来，很久没有出现在我的生活中了。</p>
-<h2>追游戏的少年</h2>
-<p>自小我就是个喜欢游戏的孩子。还记得第一次接触FC时那种肾上腺激素激增的感觉，那种兴奋异常并忘记所有烦恼的快乐。我痴迷于魂斗罗、坦克大战、冒险岛、马里奥等一系列经典游戏中，那些游戏画面组成了我童年不可磨灭的记忆。</p>
-<p>当时觉得游戏是一个高科技的东西，画面漂亮，而且一玩就上瘾。</p>
-
-      
-    </div>
-    <footer>
-      
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-  
 
   <nav id="pagination">
   
+  
+    <a href="/blog/archives/page/2/" class="alignright next">Next</a>
   
   <div class="clearfix"></div>
 </nav>
@@ -277,6 +293,8 @@
 <div class="widget tag">
   <h3 class="title">Tags</h3>
   <ul class="entry">
+  
+    <li><a href="/blog/tags/3D/">3D</a><small>1</small></li>
   
     <li><a href="/blog/tags/Backend/">Backend</a><small>1</small></li>
   
