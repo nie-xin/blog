@@ -32,9 +32,11 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Home</a></li>
     
-      <li><a href="/archives">Archives</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    
+      <li><a href="/blog/about">About</a></li>
     
   </ul>
   <div class="clearfix"></div>
@@ -136,40 +138,15 @@
         <blockquote>
 <p>Node.js自诞生之日起就以起高并发得名，其中的核心便是异步I/O了。那么到底什么是异步I/O？和传统的同步I/O比又有什么优点？让我们从简单的概念讲起吧。</p>
 </blockquote>
-<h3>同步I/O</h3>
-<p>在操作系统中我们都学过，线程执行在遇到I/O操作的时候会被阻塞。然后CPU转而去处理该I/O操作，得出结果后再返回该线程继续执行下去。这就是传统意义上得同步I/O，也是在编程中非常直观的方式。假设我们有一个名为“test.txt”的文件，下面让我们写一个读取文件的小例子：<br>    // fs是node的file system<br>    var fs = require(‘fs’);</p>
-<pre><code>//    sync指明同步<span class="type">I</span>/<span class="type">O</span>方式
-<span class="title">var</span> <span class="typedef"><span class="keyword">data</span> = fs.readFileSync<span class="container">('<span class="title">test</span>.<span class="title">txt'</span>, '<span class="title">utf</span>-8')</span>;</span>
-
-<span class="title">console</span>.log(<span class="typedef"><span class="keyword">data</span>);</span>
-<span class="title">console</span>.log('end <span class="keyword">of</span> program.');</code></pre>
-<p>可以预见，该程序先读取test文件的内容并显示在终端上，然后打印一行end of program作为程序的结束。一般程序都是这么线性执行的，理解起来也非常容易。这么执行有什么问题？</p>
-<h3>问题</h3>
-<p>这样的线程执行方式在一般情景下是完全没有问题的，但我们将场景切换到互联网上来看。传统服务器的处理方式是为每个请求开启一个线程，在遇到I/O请求的时候就按上面说的同步方式来坐阻塞处理。但每个CPU能承受的线程数是有限制的，于是达到限制的时候就必须添加新的CPU。何况开启线程是非常消耗资源的，访问量教大的互联网应用，服务器扩展的速度可能会远远超过你的想象。比如前两天听的PODCAST中，一个有几十万用户的ROR应该就已经消耗了二十几台服务器了。</p>
-<h3>策略</h3>
-<p>那么有其他的解决方法么？从上面的模型上来开，瓶颈主要是在阻塞上。于是异步I/O的概念就此诞生了。与同步想法，异步方式在遇到I/O操作时不阻塞线程，而是将I/O请求发给后台执行，然后线程继续执行下去。直到I/O操作完成后再通知线程来处理结果。于是线程的利用率就很高了，单个线程就能处理大量的请求。下面来看看异步方式I/O到底是什么样的：</p>
-<pre><code><span class="title">var</span> fs = require('fs');
-// node默认是异步处理凡事
-<span class="title">fs</span>.readFile('test.txt',<span class="string"> 'utf-8'</span>, function(err, <span class="typedef"><span class="keyword">data</span>) <span class="container">{    
-// 读取出错则打印出错信息，否则打印文件内容
-<span class="title">if</span> (<span class="title">err</span>) {
-    <span class="title">console</span>.<span class="title">log</span>(<span class="title">err</span>);
-}</span> else <span class="container">{
-    <span class="title">console</span>.<span class="title">log</span>(<span class="title">data</span>);
-}</span></span>
-});
-<span class="title">console</span>.log('end <span class="keyword">of</span> program.');</code></pre>
-<p>这个程序的执行结果又是什么？这次不再是先打印文件内容了，而是先打印了end of program，然后才是文件内容。就像上面提到的，但程序执行到读取文件这个I/O操作的时候，不会再阻塞并等待了。去读操作被交给后台去处理，而线程继续执行下去，也就是执行后面的end of program这条指令。文件读取完成后再打印文件的内容。</p>
-<h3>缺点</h3>
-<p>看起来好像异步方式是个非常完美的解决方案。别急着下结论，任何事情都有好的一面和坏的一面，没有任何方案是绝对完美的。异步方式的缺点，就在于其非线性的执行方式带给编写程序的困难。从上面的例子可以看到，异步程序的执行结果与传统的程序有很大区别。这就说明了编写异步程序比较困难，需要改变传统的程序设计思想。别低估了这个困难，传统的力量是远远超出人的想象的！</p>
-<h3>结语</h3>
-<p>传统的编程方式在互联网不断扩张之后遇到了不少挑战。并发处理，可扩展性和降低成本也越来越受到重视（可以参考LINKIN招聘数据）。异步I/O无疑是一种（但非唯一）有效的解决方式。</p>
-<p>稍后我们在一起看看采用异步I/O方式的NODE到底是如何利用异步模型来处理大规模并发的。到底是什么神奇的力量能让服务器数量从三十台降到三台？</p>
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/blog/2013/10/25/2013-10-25-node核心概念/#more" class="more-link">Read More</a>
+          </div>
         
         
       

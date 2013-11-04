@@ -32,9 +32,11 @@
 <nav id="main-nav" class="alignright">
   <ul>
     
-      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Home</a></li>
     
-      <li><a href="/archives">Archives</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    
+      <li><a href="/blog/about">About</a></li>
     
   </ul>
   <div class="clearfix"></div>
@@ -52,39 +54,22 @@
       
       
   
-    <h1 class="title"><a href="/blog/2013/11/03/osg-journey/">osg-journey</a></h1>
+    <h1 class="title"><a href="/blog/2013/11/03/osg-journey/">osg journey</a></h1>
   
 
     </header>
     <div class="entry">
       
         <p>这年头啥都不容易。好不容易遇到一个非常感兴趣的stage，结果还没面试，先给来了两道编程题。 题目到不是很难，不过要使用的这个类库我确实是一点都不了解。不过人家也在邮件了说了，出这种题目的理由就是为了测试自主解决难题和自我学习的能力。好吧，那么让我们开始吧。</p>
-<hr>
-<h3>磨刀篇</h3>
-<p><a href="https://github.com/openscenegraph/osg" target="_blank">OpenSceneGraph</a>是一个开源的场景建模C++库。在某些方面还算流行，不过今年来有些底气不足。 和众多开源项目类似，最大的问题就是文档老旧残缺，各种函数说明语焉不详。 在这里我想瞎扯几句，好的文档是一个项目成功的必然条件。君不见PHP，Python等等文档都做得非常优秀。每个函数都有具体的讲解，下面还附带应用实例。PHP的文档又更出色一些，除了官方解说还允许用户留言。下面能找到许多关于该函数的最佳实践。 与此相反，第一次搜索OSG文档的时候，我实在是倒抽了一口冷气。这他喵的也能叫文档？无非把函数接口用列表列出来而已，无实用说明，无具体实例。不得不说作者实在是惜字如金，看这意思是让我们自己一个一个试？还是直接看源代码？这尿性连OpenCV都不如阿……</p>
-<p>撇开文档暂且不说，这样的开源项目通常都非常难安装。用作者的话说就是把编译的选择和快乐留给用户，稍微直白的翻译下，他的意思就是你们能不能装我不知道，反正在我的电脑系统上是可以的。回想当年编译OPENCV的痛苦……这难不成又要折腾一次？</p>
-<p>你们也太小看小哥我了，自从有了上次的经验，哥再也不会SB的自己编译源代码了。APT GET INSTALL解决一切！ 当然了，Ubuntu库中的版本不是很新，只要不追求最新的功能，但用稳定版开发也不错嘛。</p>
-<p>于是，</p>
-<pre><code>su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> build-dep openscenegraph</code></pre>
-<p>稍等片刻就完成了。 要说UBUNTU比MAC OSX唯一强的地方就是这里了，包管理实在是太方便了阿浑蛋！</p>
-<p>装好之后用osgversion确认一下，如果返回类似下面的东西就标示安装顺利完成了：</p>
-<pre><code><span class="title">OpenSceneGraph</span> Library <span class="number">3</span>.<span class="number">0</span>.<span class="number">1</span></code></pre>
-<p>那么来看看包和头文件都安装到哪里了吧：</p>
-<pre><code><span class="comment">pkg</span>-<span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">libs</span> <span class="comment">openscenegraph</span>
-<span class="comment">pkg</span>-<span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">cflags</span> <span class="comment">openscenegraph</code></pre>
-<p>下面可以设置一下环境变量，告诉OS去那里找需要的库和头文件：</p>
-<pre><code><span class="reserved">export</span> OSG_FILE_PATH=<span class="regexp">/usr/bin/</span>data
-<span class="reserved">export</span> LD_LIBRARY_PATH=<span class="regexp">//</span>lib
-<span class="reserved">export</span> PATH=<span class="regexp">//i</span>nclude</code></pre>
-<p>有了这些信息我们就可以开始开发了。我使用的是免费又好用的Eclipse CDT， 新建一个project, 然后在project属性中做如下设置：</p>
-<p><img src="http://ww4.sinaimg.cn/large/4d51fd80gw1ea7gbdchloj20nr0e5di0.jpg" alt=""></p>
-<p><img src="http://ww1.sinaimg.cn/large/4d51fd80gw1ea7g9yj5dgj211y0koq79.jpg" alt=""></p>
-<p>好了，下面就可以慢慢玩了。如果心情好了我在慢慢更新吧。</p>
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/blog/2013/11/03/osg-journey/#more" class="more-link">Read More</a>
+          </div>
         
         
       
@@ -185,40 +170,15 @@
         <blockquote>
 <p>Node.js自诞生之日起就以起高并发得名，其中的核心便是异步I/O了。那么到底什么是异步I/O？和传统的同步I/O比又有什么优点？让我们从简单的概念讲起吧。</p>
 </blockquote>
-<h3>同步I/O</h3>
-<p>在操作系统中我们都学过，线程执行在遇到I/O操作的时候会被阻塞。然后CPU转而去处理该I/O操作，得出结果后再返回该线程继续执行下去。这就是传统意义上得同步I/O，也是在编程中非常直观的方式。假设我们有一个名为“test.txt”的文件，下面让我们写一个读取文件的小例子：<br>    // fs是node的file system<br>    var fs = require(‘fs’);</p>
-<pre><code>//    sync指明同步<span class="type">I</span>/<span class="type">O</span>方式
-<span class="title">var</span> <span class="typedef"><span class="keyword">data</span> = fs.readFileSync<span class="container">('<span class="title">test</span>.<span class="title">txt'</span>, '<span class="title">utf</span>-8')</span>;</span>
-
-<span class="title">console</span>.log(<span class="typedef"><span class="keyword">data</span>);</span>
-<span class="title">console</span>.log('end <span class="keyword">of</span> program.');</code></pre>
-<p>可以预见，该程序先读取test文件的内容并显示在终端上，然后打印一行end of program作为程序的结束。一般程序都是这么线性执行的，理解起来也非常容易。这么执行有什么问题？</p>
-<h3>问题</h3>
-<p>这样的线程执行方式在一般情景下是完全没有问题的，但我们将场景切换到互联网上来看。传统服务器的处理方式是为每个请求开启一个线程，在遇到I/O请求的时候就按上面说的同步方式来坐阻塞处理。但每个CPU能承受的线程数是有限制的，于是达到限制的时候就必须添加新的CPU。何况开启线程是非常消耗资源的，访问量教大的互联网应用，服务器扩展的速度可能会远远超过你的想象。比如前两天听的PODCAST中，一个有几十万用户的ROR应该就已经消耗了二十几台服务器了。</p>
-<h3>策略</h3>
-<p>那么有其他的解决方法么？从上面的模型上来开，瓶颈主要是在阻塞上。于是异步I/O的概念就此诞生了。与同步想法，异步方式在遇到I/O操作时不阻塞线程，而是将I/O请求发给后台执行，然后线程继续执行下去。直到I/O操作完成后再通知线程来处理结果。于是线程的利用率就很高了，单个线程就能处理大量的请求。下面来看看异步方式I/O到底是什么样的：</p>
-<pre><code><span class="title">var</span> fs = require('fs');
-// node默认是异步处理凡事
-<span class="title">fs</span>.readFile('test.txt',<span class="string"> 'utf-8'</span>, function(err, <span class="typedef"><span class="keyword">data</span>) <span class="container">{    
-// 读取出错则打印出错信息，否则打印文件内容
-<span class="title">if</span> (<span class="title">err</span>) {
-    <span class="title">console</span>.<span class="title">log</span>(<span class="title">err</span>);
-}</span> else <span class="container">{
-    <span class="title">console</span>.<span class="title">log</span>(<span class="title">data</span>);
-}</span></span>
-});
-<span class="title">console</span>.log('end <span class="keyword">of</span> program.');</code></pre>
-<p>这个程序的执行结果又是什么？这次不再是先打印文件内容了，而是先打印了end of program，然后才是文件内容。就像上面提到的，但程序执行到读取文件这个I/O操作的时候，不会再阻塞并等待了。去读操作被交给后台去处理，而线程继续执行下去，也就是执行后面的end of program这条指令。文件读取完成后再打印文件的内容。</p>
-<h3>缺点</h3>
-<p>看起来好像异步方式是个非常完美的解决方案。别急着下结论，任何事情都有好的一面和坏的一面，没有任何方案是绝对完美的。异步方式的缺点，就在于其非线性的执行方式带给编写程序的困难。从上面的例子可以看到，异步程序的执行结果与传统的程序有很大区别。这就说明了编写异步程序比较困难，需要改变传统的程序设计思想。别低估了这个困难，传统的力量是远远超出人的想象的！</p>
-<h3>结语</h3>
-<p>传统的编程方式在互联网不断扩张之后遇到了不少挑战。并发处理，可扩展性和降低成本也越来越受到重视（可以参考LINKIN招聘数据）。异步I/O无疑是一种（但非唯一）有效的解决方式。</p>
-<p>稍后我们在一起看看采用异步I/O方式的NODE到底是如何利用异步模型来处理大规模并发的。到底是什么神奇的力量能让服务器数量从三十台降到三台？</p>
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/blog/2013/10/25/2013-10-25-node核心概念/#more" class="more-link">Read More</a>
+          </div>
         
         
       
